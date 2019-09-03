@@ -56,6 +56,14 @@ public class Complex {
     public void setImaginary(double imaginary) {
         this.imaginary = imaginary;
     }
+    
+    public boolean equals(Complex c) {
+        boolean equals = false;
+        if (real == c.real && imaginary == c.imaginary) {
+            equals = true;
+        }
+        return equals;
+    }
 
     @Override
     public String toString() {

@@ -93,6 +93,14 @@ public class Basic {
         }
         return ans;
     }
+    public boolean equalsV(Complex[] v1, Complex[] v2){
+        for (int i = 0; i < v1.length; i++){
+            if (!v1[i].equals(v2[i])){
+                return false;
+            }
+        }
+        return true;
+    }
     
     public Complex[][] sumM(Complex[][] m1, Complex[][] m2){
         Complex[][] ansM = new Complex[m1.length][m1[0].length];
