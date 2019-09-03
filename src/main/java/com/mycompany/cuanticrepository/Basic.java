@@ -91,8 +91,36 @@ public class Basic {
         for (int i = 0; i < v1.length; i++) {
             ans = sum(ans, mult(V[i], v2[i]));
         }
-        return productoInternoVector;
+        return ans;
     }
+    
+    public Complex[][] sumM(Complex[][] m1, Complex[][] m2){
+        Complex[][] ansM = new Complex[m1.length][m1[0].length];
+        for (int i = 0; i < m1.length;i++){
+            ansM[i] = sumV(m1[i], m2[i]);
+        }
+        return ansM;
+    }
+    
+    public Complex[][] inverseM(Complex[][] m1){
+        Complex[][] ansM = m1;
+        for (int i = 0; i< m1.length; i++){
+            ansM[i] = inverseV(m1[i]);
+        }
+        return ansM;    
+    }
+    
+    public Complex[][] transpM(Complex [][] m1){
+        Complex[][] ansM = new Complex[m1[0].length][m1.length];
+        for (int i = 0;i < m1.length;i++){
+            for (int j = 0;j < m1[0].length;j++){
+                ansM[j][i] = m1[i][j];
+            }
+        }
+        return ansM;
+    }
+    
+    
     
     
 
