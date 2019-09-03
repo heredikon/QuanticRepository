@@ -30,6 +30,9 @@ public class Complex {
     public Complex conjugado(){
         return new Complex(real, -imaginary);
     }
+    public Complex inverse(){
+        return new Complex(-real, -imaginary);
+    }
     
     public Complex getPolar(){
         return new Complex(this.module(),this.phase());
