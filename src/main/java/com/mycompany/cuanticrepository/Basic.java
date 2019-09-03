@@ -102,6 +102,15 @@ public class Basic {
         return true;
     }
     
+    public boolean equalsM(Complex[][] m1, Complex[][] m2){
+        for (int i = 0; i < m1.length; i++){
+            if (!equalsV(m1[i], m2[i])){
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public Complex[][] sumM(Complex[][] m1, Complex[][] m2){
         Complex[][] ansM = new Complex[m1.length][m1[0].length];
         for (int i = 0; i < m1.length;i++){
@@ -128,6 +137,22 @@ public class Basic {
         return ansM;
     }
     
+    public Complex[][] tensorProduct(Complex[][] m1, Complex[][] m2){
+        Complex[][] ansM = new Complex[m1.length*m2.length][m1[0].length*m2[0].length];
+        System.out.println(m2[0].length);
+        for (int i = 0;i < m1.length;i++){
+            for (int j = 0;j < m1[0].length;j++){
+                for (int p = 0;p < m2.length;p++){
+                    for (int q = 0;q < m2[0].length;q++){
+                        
+                        System.out.println(i + " , " + j + " , " + p + " , " + q);
+                        ansM[i*m2.length+p][j*m2[0].length+q] = mult(m1[i][j], m2[p][q]);
+                    }
+                }
+            }
+        }
+        return ansM;
+    }    
     
     
     
