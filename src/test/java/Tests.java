@@ -103,7 +103,7 @@ public class Tests {
         Complex[][] m2 = {{new Complex(5, 0), new Complex(6, 0)}, {new Complex(7, 0), new Complex(8, 0)}};
         Complex[][] result1 = basic.tensorProduct(m1, m2);
         Complex[][] resultToCompare1 = {{new Complex(5, 0), new Complex(6, 0), new Complex(10, 0), new Complex(12, 0)}, {new Complex(7, 0), new Complex(8, 0), new Complex(14, 0), new Complex(16, 0)}, {new Complex(15, 0), new Complex(18, 0), new Complex(20, 0), new Complex(24, 0)}, {new Complex(21, 0), new Complex(24, 0), new Complex(28, 0), new Complex(32, 0)}};
-        System.out.println(result1[0][1]);
+        System.out.println(".........................."+result1[1][0]);
         assertTrue(basic.equalsM(result1, resultToCompare1));
     }
     
