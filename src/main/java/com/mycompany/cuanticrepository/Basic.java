@@ -137,6 +137,19 @@ public class Basic {
         }
         return ansM;
     }
+    
+    public Complex[][] conjugadoM(Complex[][] m1){
+        Complex[][] ansM = new Complex[m1.length][m1[0].length];
+        for (int i=0;i<ansM.length;i++){
+            ansM[i] = conjugadoV(m1[i]);
+        }
+        return ansM;
+    }
+    public Complex[][] attachedM(Complex[][] m1){
+        Complex[][] ansM = new Complex[m1.length][m1[0].length];
+        ansM = transpM(conjugadoM(m1));
+        return ansM;
+    }
 
     public Complex[][] tensorProduct(Complex[][] m1, Complex[][] m2) {
         Complex[][] ansM = new Complex[m1.length * m2.length][m1[0].length * m2[0].length];
