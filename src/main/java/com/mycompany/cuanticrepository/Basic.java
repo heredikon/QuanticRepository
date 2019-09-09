@@ -17,6 +17,7 @@ public class Basic {
     }
 
     public Complex sum(Complex x, Complex y) {
+        Complex ans = new Complex(0,0);
         ans.setReal(x.getReal() + y.getReal());
         ans.setImaginary(x.getImaginary() + y.getImaginary());
         return new Complex(ans.getReal(), ans.getImaginary());
@@ -35,10 +36,11 @@ public class Basic {
     }
 
     public Complex divide(Complex x, Complex y) {
-        double denominator = Math.pow(y.getReal(), 2) + Math.pow(y.getImaginary(), 2);
-        ans.setReal(((y.getReal() * y.getReal()) + (x.getImaginary() * y.getImaginary())) / denominator);
-        ans.setImaginary(((y.getReal() * x.getImaginary()) - (x.getReal() * y.getImaginary())) / denominator);
-        return new Complex(ans.getReal(), ans.getImaginary());
+        Complex ans = new Complex(0,0);
+        double denominador = Math.pow(y.getReal(), 2) + Math.pow(y.getImaginary(), 2);
+        ans.setReal(((x.getReal() * y.getReal()) + (x.getImaginary() * y.getImaginary())) / denominador);
+        ans.setImaginary(((y.getReal() * x.getImaginary()) - (x.getReal() * y.getImaginary())) / denominador);
+        return ans;
 
     }
 
@@ -87,14 +89,18 @@ public class Basic {
     }
 
     public Complex internalProV(Complex[] v1, Complex[] v2) {
+        Complex ans = new Complex(0,0);
         Complex[] V = conjugadoV(v1);
         for (int i = 0; i < v1.length; i++) {
             ans = sum(ans, mult(V[i], v2[i]));
         }
-        return new Complex(ans.getReal(), ans.getImaginary());
+        return ans;
     }
 
     public boolean equalsV(Complex[] v1, Complex[] v2) {
+        if (v1.length!=v2.length){
+            return false;
+        }
         for (int i = 0; i < v1.length; i++) {
             if (!v1[i].equals(v2[i])) {
                 return false;
@@ -102,12 +108,12 @@ public class Basic {
         }
         return true;
     }
-    
-    public Complex[][] identityM(int length){
+
+    public Complex[][] identityM(int length) {
         Complex[][] ansM = new Complex[length][length];
-        for (int i = 0;i<length;i++){
-            for (int j = 0;j<length;j++){
-                ansM[i][j] = i == j ?new Complex(1,0) : new Complex(0,0);
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                ansM[i][j] = i == j ? new Complex(1, 0) : new Complex(0, 0);
             }
         }
         return ansM;
@@ -198,24 +204,30 @@ public class Basic {
     public Complex[] accion(Complex[][] m1, Complex[] v1) {
         Complex[] ansV = new Complex[v1.length];
         for (int i = 0; i < m1.length; i++) {
-            ansV[i] = new Complex(0,0);
+            ansV[i] = new Complex(0, 0);
             for (int j = 0; j < m1.length; j++) {
-                ansV[i] = sum(ansV[i], mult(m1[i][j],v1[j]));
+                ansV[i] = sum(ansV[i], mult(m1[i][j], v1[j]));
             }
         }
         return ansV;
     }
-    
-    public boolean isHermitian(Complex[][] m1){
+
+    public boolean isHermitian(Complex[][] m1) {
         return equalsM(m1, attachedM(m1));
     }
-    
-    public boolean isUnitary(Complex[][] m1){
+
+    public boolean isUnitary(Complex[][] m1) {
         return equalsM(multM(m1, attachedM(m1)), identityM(m1.length));
     }
+
+    public double normV(Complex[] v1) {
+        return Math.sqrt(internalProV(v1, v1).getReal());
+    }
     
-    
-    
+    public double distanceV(Complex[] v1, Complex[] v2){
+        Complex[] aux = sumV(v1, inverseV(v2));
+        return Math.sqrt(internalProV(aux, aux).getReal());
+    }
 
     public Complex[][] tensorProduct(Complex[][] m1, Complex[][] m2) {
         Complex[][] ansM = new Complex[m1.length * m2.length][m1[0].length * m2[0].length];
@@ -224,7 +236,6 @@ public class Basic {
             for (int j = 0; j < m1[0].length; j++) {
                 for (int p = 0; p < m2.length; p++) {
                     for (int q = 0; q < m2[0].length; q++) {
-                        System.out.println(i + " , " + j + " , " + p + " , " + q);
                         ansM[i * m2.length + p][j * m2[0].length + q] = mult(m1[i][j], m2[p][q]);
                     }
                 }
@@ -232,6 +243,5 @@ public class Basic {
         }
         return ansM;
     }
-    public Complex distance()
 
 }

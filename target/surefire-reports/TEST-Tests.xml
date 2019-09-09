@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="Tests" time="0.004" errors="0" skipped="0">
+<testsuite tests="26" failures="0" name="Tests" time="0.003" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_221\jre\bin"/>
@@ -62,8 +62,30 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Tests" name="Tests.testDeberiaCompararDosVectores" time="0.002"/>
-  <testcase classname="Tests" name="Tests.testDeberiaCalcularElProductoTensorEntreMatrices" time="0.002"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularLaDistanciaEntreDosVectoresComplejos" time="0.002"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularElProductoInternoEntreVectores" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaRealizarLaMultiplicacionEscalarConVector" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaDeterminarSiUnaMatrizCuadradaEsHermitiana" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaRealizarLaMultiplicacionEscalarConMatriz" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaDeterminarSiUnaMatrizCuadradaEsUnitaria" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaObtenerElConjugadoDeUnVectorDeComplejos" time="0"/>
   <testcase classname="Tests" name="Tests.testDeberiaSumarDosNumeroComplejos" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularElConjugadoDeUnaMatriz" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularLaMatrizIdentidad" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularLaTrazaDeUnaMatrizCompleja" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaRealizarLaSumaDeMatrices" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularLaTranspuestaDeUnaMatriz" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularElInversoDeUnaMatriz" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaDividirDosNumeroComplejos1" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaObtenerElInversoDeUnVectorDeComplejos" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularLaAdjuntaDeUnaMatriz" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularLaNormaDeUnVectorComplejo" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaRestarDosNumeroComplejos" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaSumarDosVectoresDeComplejos" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularElProductoTensorEntreMatrices" time="0.001"/>
   <testcase classname="Tests" name="Tests.testDeberiaMultiplicarDosNumeroComplejos" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCalcularLaAccion" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaMultiplicarMatrices" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCompararDosMatrices" time="0"/>
+  <testcase classname="Tests" name="Tests.testDeberiaCompararDosVectores" time="0"/>
 </testsuite>
