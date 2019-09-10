@@ -1,4 +1,3 @@
-
 # Libreria de numeros Complejos
 
 Este repositorio es una libreria de operaciones que se podran realizar con numeros complejos, Vectores y matrices, la primer parte de este son las operaciones basicas
@@ -41,4 +40,37 @@ para utilizarse en otro programa es necesario importar la calculadora y el objet
 ## Resultados de tests
 ![enter image description here](https://lh3.googleusercontent.com/_fA7489_lcdmvN67c06Rk7mgZeDQ80xFReF2hPNlCkn4zza_OMoDnLoAO1tEle9f9-NjtQJ8EC0B "Tests")
 
+### Ejemplos de tests
+  ```Java
+    public void testDeberiaDividirDosNumeroComplejos1() {
+        Complex c1 = new Complex(5, 0);
+        Complex c2 = new Complex(0, 2);
+        Complex result1 = basic.divide(c1, c2);
+        Complex resultToCompare1 = new Complex(0, -2.5);
+        assertTrue(resultToCompare1.equals(result1));
+
+        Complex c3 = new Complex(0, 5);
+        Complex c4 = new Complex(2, 0);
+        Complex result2 = basic.divide(c3, c4);
+        Complex resultToCompare2 = new Complex(0, 2.5);
+        assertTrue(resultToCompare2.equals(result2));
+        
+    public void testDeberiaRealizarLaSumaDeMatrices() {
+        Complex[][] m1 = {{new Complex(2, 3), new Complex(4, 5)},
+				          {new Complex(3, 0), new Complex(1, 5)}};
+        Complex[][] m2 = {{new Complex(2, 3), new Complex(4, 5)}, 
+					      {new Complex(3, 1), new Complex(1, 5)}};
+        Complex[][] result1 = basic.sumM(m1, m2);
+        Complex[][] resultToCompare1 = {{new Complex(4, 6), new Complex(8, 10)},
+								        {new Complex(6, 1), new Complex(2, 10)}};
+        assertTrue(basic.equalsM(result1, resultToCompare1));
+ ```
+
+
+## Autor
+
+Fabian Camilo Bohorquez Heredia
+Administrador de empresas
+Estudiante de Ingenieria de sistemas
+**Escuela Colombiana De Ingenieria Julio Garavito**
 
