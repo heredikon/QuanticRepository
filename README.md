@@ -57,12 +57,12 @@ para utilizarse en otro programa es necesario importar la calculadora y el objet
         
     public void testDeberiaRealizarLaSumaDeMatrices() {
         Complex[][] m1 = {{new Complex(2, 3), new Complex(4, 5)},
-				          {new Complex(3, 0), new Complex(1, 5)}};
+			        {new Complex(3, 0), new Complex(1, 5)}};
         Complex[][] m2 = {{new Complex(2, 3), new Complex(4, 5)}, 
-					      {new Complex(3, 1), new Complex(1, 5)}};
+			        {new Complex(3, 1), new Complex(1, 5)}};
         Complex[][] result1 = basic.sumM(m1, m2);
         Complex[][] resultToCompare1 = {{new Complex(4, 6), new Complex(8, 10)},
-								        {new Complex(6, 1), new Complex(2, 10)}};
+					      {new Complex(6, 1), new Complex(2, 10)}};
         assertTrue(basic.equalsM(result1, resultToCompare1));
  ```
 
@@ -70,7 +70,10 @@ para utilizarse en otro programa es necesario importar la calculadora y el objet
 ## Autor
 
 Fabian Camilo Bohorquez Heredia
+
 Administrador de empresas
+
 Estudiante de Ingenieria de sistemas
+
 **Escuela Colombiana De Ingenieria Julio Garavito**
 
