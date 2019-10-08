@@ -9,6 +9,6 @@ package com.mycompany.cuanticrepository;
  *
  * @author fabia
  */
-public class Quantic {
+public class basicQuantic {
     
 }
