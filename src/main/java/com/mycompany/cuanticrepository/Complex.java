@@ -70,6 +70,15 @@ public class Complex {
         return (imaginary > 0)? Double.toString(real) +" + "+ Double.toString(imaginary)+"i" :
                                 Double.toString(real) +" "+ Double.toString(imaginary)+"i";
     }
+    public String prettyPrintFormaNormalNumeroComplejo() {
+        String numeroComplejo = "";
+        if (imaginary >= 0) {
+            numeroComplejo = real + "+" + imaginary + "i";
+        } else {
+            numeroComplejo = real + "" + imaginary + "i";
+        }
+        return numeroComplejo;
+    }
     
     
 }

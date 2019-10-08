@@ -16,7 +16,7 @@ public class Basic {
     public Basic() {
     }
 
-    public Complex sum(Complex x, Complex y) {
+    public static Complex sum(Complex x, Complex y) {
         Complex ans = new Complex(0,0);
         ans.setReal(x.getReal() + y.getReal());
         ans.setImaginary(x.getImaginary() + y.getImaginary());
@@ -201,7 +201,7 @@ public class Basic {
         return trace(multM(m1, m2));
     }
 
-    public Complex[] accion(Complex[][] m1, Complex[] v1) {
+    public  Complex[] accion(Complex[][] m1, Complex[] v1) {
         Complex[] ansV = new Complex[v1.length];
         for (int i = 0; i < m1.length; i++) {
             ansV[i] = new Complex(0, 0);
@@ -243,5 +243,23 @@ public class Basic {
         }
         return ansM;
     }
+        public static double normaKet(Complex[] k) {
+        double norma = 0;
+        for (int i = 0; i < k.length; i++) {
+            norma += Math.pow(k[i].module(), 2);
+        }
+        norma = Math.sqrt(norma);
+        return norma;
+    }
+        
+        public static Complex[] normalizeV(Complex[] k) {
+        Complex[] vectorNormalizado = new Complex[k.length];
+        double norma = normaKet(k);
+        for (int i = 0; i < k.length; i++) {
+            vectorNormalizado[i] = new  Complex((k[i].getReal()) / norma, (k[i].getImaginary()) / norma);
+        }
+        return vectorNormalizado;
+    }
+        
 
 }
