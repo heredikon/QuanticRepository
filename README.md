@@ -1,4 +1,5 @@
-# Libreria de numeros Complejos
+
+# Libreria de numeros Complejos e Introduccion a Cuantico
 
 Este repositorio es una libreria de operaciones que se podran realizar con numeros complejos, Vectores y matrices, la primer parte de este son las operaciones basicas
 1.  Suma
@@ -25,7 +26,6 @@ Este repositorio es una libreria de operaciones que se podran realizar con numer
 22. Revisar si es Hermitian
 23. Producto tensor.
 
-
 ## Instrucciones de uso
 
 Para utilizar esta herramienta  se debe clonar el repositorio de github:
@@ -37,10 +37,11 @@ para utilizarse en otro programa es necesario importar la calculadora y el objet
 
     import "route"/Basic;
     import "route"/Complex;
-## Resultados de tests
+    import "route"/BasicQuantic;
+## Resultados de tests complejos
 ![enter image description here](https://lh3.googleusercontent.com/_fA7489_lcdmvN67c06Rk7mgZeDQ80xFReF2hPNlCkn4zza_OMoDnLoAO1tEle9f9-NjtQJ8EC0B "Tests")
 
-### Ejemplos de tests
+### Ejemplos de tests matematica de complejos
   ```Java
     public void testDeberiaDividirDosNumeroComplejos1() {
         Complex c1 = new Complex(5, 0);
@@ -65,7 +66,31 @@ para utilizarse en otro programa es necesario importar la calculadora y el objet
 					      {new Complex(6, 1), new Complex(2, 10)}};
         assertTrue(basic.equalsM(result1, resultToCompare1));
  ```
+## Resultados de tests Cuanticos basicos
+![enter image description here](https://lh3.googleusercontent.com/ITldDjQNuQLP_gXYUDT5tK-mJrs0smDrEMHgJ9VIRU9cOVcpxhS0G9IYZoo7-DSF-Xqqc5Dxvi-J)
+### Ejemplos de tests cuaticos basicos
 
+```Java
+public void testDeberiaHacerMarblesConReales() {
+        double[][] matrizAdyacencia = {
+            {0, 1.0 / 2.0, 1.0 / 2.0, 0},
+            {1.0 / 2.0, 0, 0, 1.0 / 2.0},
+            {1.0 / 2.0, 0, 0, 1.0 / 2.0},
+            {0, 1.0 / 2.0, 1.0 / 2.0, 0}
+        };
+        double[] estadoInicial = {1.0, 0, 0, 0};
+        double[] estadoFinalResultToCompare1 = {0, 1.0 / 2.0, 1.0 / 2.0, 0};
+
+        double[] estadoFinalResult1 = basicQuantic.realMarbles(matrizAdyacencia, estadoInicial, 1);
+        Assert.assertArrayEquals(estadoFinalResultToCompare1, estadoFinalResult1, 0);
+
+        double[] estadoFinalResultToCompare2 = {1.0 / 2.0, 0, 0, 1.0 / 2.0};
+
+        double[] estadoFinalResult2 = basicQuantic.realMarbles(matrizAdyacencia, estadoInicial, 2);
+        Assert.assertArrayEquals(estadoFinalResultToCompare2, estadoFinalResult2, 0);
+
+    }
+```
 
 ## Autor
 
