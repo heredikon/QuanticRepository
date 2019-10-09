@@ -9,11 +9,6 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.junit.Assert;
 
-/**
- * Pruebas unitarias para la clase QuantumExperiments.
- *
- * @author Carlos Andres Medina Rivas
- */
 public class QuantumExperimentsTest extends TestCase {
 
     private final BasicQuantic quantumExperiments = new BasicQuantic();
