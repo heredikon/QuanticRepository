@@ -15,7 +15,7 @@ public class BasicQuantic {
     
     Basic basic = new Basic();
     
-    private int[] cambioEstadoBooleanos(int[][] m, int[] v) {
+    private int[] booleanAction(int[][] m, int[] v) {
         int[] accion = new int[v.length];
         int result = 0;
         for (int i = 0; i < v.length; i++) {
@@ -27,7 +27,7 @@ public class BasicQuantic {
         }
         return accion;
     }
-    private double[] cambioEstadoFracciones(double[][] m, double[] v){
+    private double[] realAction(double[][] m, double[] v){
         double[] accion = new double[v.length];
         double result = 0;
         for (int i = 0; i < v.length; i++) {
@@ -40,31 +40,31 @@ public class BasicQuantic {
         return accion;
     }
     
-    public int[] experimentoConMarblesBooleano(int[][] matrizAdyacencia, int[] estadoInicial, int cantidadCambios) {
+    public int[] booleanMarbles(int[][] matrizAdyacencia, int[] estadoInicial, int cantidadCambios) {
         int[] estadoFinal = estadoInicial;
         for (int i = 0; i < cantidadCambios; i++) {
-            estadoFinal = cambioEstadoBooleanos(matrizAdyacencia, estadoFinal);
+            estadoFinal = booleanAction(matrizAdyacencia, estadoFinal);
         }
         return estadoFinal;
     }
     
-    public double[] experimentoConMarblesFracciones(double[][] matrizAdyacencia, double[] estadoInicial, int cantidadCambios) {
+    public double[] realMarbles(double[][] matrizAdyacencia, double[] estadoInicial, int cantidadCambios) {
         double[] estadoFinal = estadoInicial;
         for (int i = 0; i < cantidadCambios; i++) {
-            estadoFinal = cambioEstadoFracciones(matrizAdyacencia, estadoFinal);
+            estadoFinal = realAction(matrizAdyacencia, estadoFinal);
         }
         return estadoFinal;
     }
     
-    public Complex[] experimentoConFotonesComplejos(Complex[][] matrizAdyacencia, Complex[] estadoInicial, int cantidadCambios)  {
+    public Complex[] complexPhotons(Complex[][] matrizAdyacencia, Complex[] estadoInicial, int cantidadCambios)  {
         Complex[] estadoFinal = estadoInicial;
         for (int i = 0; i < cantidadCambios; i++) {
             estadoFinal = basic.accion(matrizAdyacencia, estadoFinal);
         }
         return estadoFinal;
     }
-    private double[][] multiplicarMatrices(double[][] m1, double[][] m2) {
-        double[][] multiplicacionMatrices = new double[m1.length][m2[0].length];
+    private double[][] multMatrix(double[][] m1, double[][] m2) {
+        double[][] ans = new double[m1.length][m2[0].length];
         double result;
         int i;
         int j;
@@ -78,31 +78,12 @@ public class BasicQuantic {
                     j++;
                     i++;
                 }
-                multiplicacionMatrices[i_f][j_f] = result;
+                ans[i_f][j_f] = result;
             }
         }
-        return multiplicacionMatrices;
+        return ans;
     }
-    private void mostrarMatrizAdyacencia(double[][] m) {
-        System.out.println("MatrizBala:");
-        for (int i = 0; i < m.length; i++) {
-            System.out.print("|");
-            for (int j = 0; j < m[0].length; j++) {
-                System.out.printf("%.3f", m[i][j]);
-                System.out.print("|");
-            }
-            System.out.println("");
-        }
-    }
-    private void mostrarVectorCambioEstado(double[] y) {
-        System.out.println("VectorBala:");
-        System.out.print("|");
-        for (int i = 0; i < y.length; i++) {
-            System.out.printf("%.3f", y[i]);
-            System.out.print("|");
-        }
-        System.out.println("");
-    }
+
     
     private String matrizAString(double[][] m) {
         String matrizString = "[";
@@ -115,7 +96,7 @@ public class BasicQuantic {
         }
         return matrizString;
     }
-    public String[] experimentoMultirendijasBalas(int numeroSlits, int numeroTargets, double[][] probabilidades)  {
+    public String[] multiSlitBullet(int numeroSlits, int numeroTargets, double[][] probabilidades)  {
         int n = numeroSlits + numeroTargets + 1;
         double[][] matrizAdyacencia = probabilidades;
         for (int i = 1; i < numeroSlits + 1; i++) {
@@ -132,15 +113,13 @@ public class BasicQuantic {
                 x[i] = 0.0;
             }
         }
-        double[][] matrizAdyacencia2 = multiplicarMatrices(matrizAdyacencia, matrizAdyacencia);
-        double[] y = cambioEstadoFracciones(matrizAdyacencia2, x);
-        mostrarMatrizAdyacencia(matrizAdyacencia2);
-        mostrarVectorCambioEstado(y);
+        double[][] matrizAdyacencia2 = multMatrix(matrizAdyacencia, matrizAdyacencia);
+        double[] y = realAction(matrizAdyacencia2, x);
         String[] matrizVector = {matrizAString(matrizAdyacencia2), Arrays.toString(y)};
         return matrizVector;
     }
     
-    private String verificarInterferencias(Complex[][] m, int numeroSlits) {
+    private String interferenceCheck(Complex[][] m, int numeroSlits) {
         Complex cero = new Complex(0, 0);
         String interferencias = "interferencias: ";
         for (int i = numeroSlits + 1; i < m.length; i++) {
@@ -151,7 +130,7 @@ public class BasicQuantic {
         return interferencias;
     }
 
-    private void mostrarMatrizFoton(Complex[][] m) {
+    private void printPhotonMatrix(Complex[][] m) {
         System.out.println("MatrizFoton:");
         for (int i = 0; i < m.length; i++) {
             System.out.print("|");
@@ -163,7 +142,7 @@ public class BasicQuantic {
         }
     }
 
-    private void mostrarVectorFoton(Complex[] y) {
+    private void printPhotonVector(Complex[] y) {
         System.out.println("VectorFoton:");
         System.out.print("|");
         for (int i = 0; i < y.length; i++) {
@@ -173,7 +152,7 @@ public class BasicQuantic {
         System.out.println("");
     }
 
-    private String matrizAStringFoton(Complex[][] m) {
+    private String stringifyPhotonMatrix(Complex[][] m) {
         String matrizString = "[";
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[0].length; j++) {
@@ -188,7 +167,7 @@ public class BasicQuantic {
         return matrizString;
     }
 
-    private String vectorAStringFoton(Complex[] y) {
+    private String stringifyPhotonVector(Complex[] y) {
         String vectorS = "{";
         for (int i = 0; i < y.length; i++) {
             if (i + 1 == y.length) {
@@ -202,7 +181,7 @@ public class BasicQuantic {
     }
 
    
-    public String[] experimentoMultirendijasFotones(int numeroSlits, int numeroTargets, Complex[][] probabilidades){
+    public String[] multiSlitPhoton(int numeroSlits, int numeroTargets, Complex[][] probabilidades){
         int n = numeroSlits + numeroTargets + 1;
         Complex[][] matrizAdyacencia = probabilidades;
         for (int i = 1; i < numeroSlits + 1; i++) {
@@ -221,9 +200,9 @@ public class BasicQuantic {
         }
         Complex[][] matrizAdyacencia2 = basic.multM(matrizAdyacencia, matrizAdyacencia);
         Complex[] y = basic.accion(matrizAdyacencia2, x);
-        mostrarMatrizFoton(matrizAdyacencia2);
-        mostrarVectorFoton(y);
-        String[] matrizVector = {matrizAStringFoton(matrizAdyacencia2), vectorAStringFoton(y), verificarInterferencias(matrizAdyacencia2, numeroSlits)};
+        printPhotonMatrix(matrizAdyacencia2);
+        printPhotonVector(y);
+        String[] matrizVector = {stringifyPhotonMatrix(matrizAdyacencia2), stringifyPhotonVector(y), interferenceCheck(matrizAdyacencia2, numeroSlits)};
         return matrizVector;
     }
 

@@ -10,32 +10,16 @@ import junit.framework.TestSuite;
 import org.junit.Assert;
 
 /**
- * Pruebas unitarias para la clase QuantumExperiments.
- *
- * @author Carlos Andres Medina Rivas
+ * algunas de las pruebas fueron basadas de internet
+ * @author fabia
  */
-public class QuantumExperimentsTest extends TestCase {
 
-    private final BasicQuantic quantumExperiments = new BasicQuantic();
+public class BasicQuanticTest extends TestCase {
+
+    private final BasicQuantic basicQuantic = new BasicQuantic();
     private final Basic basic = new Basic();
 
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public QuantumExperimentsTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(QuantumExperimentsTest.class);
-    }
-
-    public void testExperimentoConMarblesBooleano() {
+    public void testDeberiaHacerMarblesBooleanCorrectamente() {
         int[][] matrizAdyacencia = {
             {0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0},
@@ -48,22 +32,22 @@ public class QuantumExperimentsTest extends TestCase {
 
         int[] estadoFinalResultToCompare1 = {0, 0, 12, 5, 1, 9};
 
-        int[] estadoFinalResult1 = quantumExperiments.experimentoConMarblesBooleano(matrizAdyacencia, estadoInicial, 1);
+        int[] estadoFinalResult1 = basicQuantic.booleanMarbles(matrizAdyacencia, estadoInicial, 1);
         Assert.assertArrayEquals(estadoFinalResultToCompare1, estadoFinalResult1);
 
         int[] estadoFinalResultToCompare2 = {0, 0, 9, 5, 12, 1};
 
-        int[] estadoFinalResult2 = quantumExperiments.experimentoConMarblesBooleano(matrizAdyacencia, estadoInicial, 2);
+        int[] estadoFinalResult2 = basicQuantic.booleanMarbles(matrizAdyacencia, estadoInicial, 2);
         Assert.assertArrayEquals(estadoFinalResultToCompare2, estadoFinalResult2);
 
         int[] estadoFinalResultToCompare3 = {0, 0, 1, 5, 9, 12};
 
-        int[] estadoFinalResult3 = quantumExperiments.experimentoConMarblesBooleano(matrizAdyacencia, estadoInicial, 3);
+        int[] estadoFinalResult3 = basicQuantic.booleanMarbles(matrizAdyacencia, estadoInicial, 3);
         Assert.assertArrayEquals(estadoFinalResultToCompare3, estadoFinalResult3);
 
     }
 
-    public void testExperimentoConMarblesFracciones() {
+    public void testDeberiaHacerMarblesConReales() {
         double[][] matrizAdyacencia = {
             {0, 1.0 / 2.0, 1.0 / 2.0, 0},
             {1.0 / 2.0, 0, 0, 1.0 / 2.0},
@@ -73,17 +57,17 @@ public class QuantumExperimentsTest extends TestCase {
         double[] estadoInicial = {1.0, 0, 0, 0};
         double[] estadoFinalResultToCompare1 = {0, 1.0 / 2.0, 1.0 / 2.0, 0};
 
-        double[] estadoFinalResult1 = quantumExperiments.experimentoConMarblesFracciones(matrizAdyacencia, estadoInicial, 1);
+        double[] estadoFinalResult1 = basicQuantic.realMarbles(matrizAdyacencia, estadoInicial, 1);
         Assert.assertArrayEquals(estadoFinalResultToCompare1, estadoFinalResult1, 0);
 
         double[] estadoFinalResultToCompare2 = {1.0 / 2.0, 0, 0, 1.0 / 2.0};
 
-        double[] estadoFinalResult2 = quantumExperiments.experimentoConMarblesFracciones(matrizAdyacencia, estadoInicial, 2);
+        double[] estadoFinalResult2 = basicQuantic.realMarbles(matrizAdyacencia, estadoInicial, 2);
         Assert.assertArrayEquals(estadoFinalResultToCompare2, estadoFinalResult2, 0);
 
     }
 
-    public void testExperimentoConFotonesComplejos() {
+    public void testDeberiaHacerPhotonesComplejos() {
         Complex[][] matrizAdyacencia = {
             {new Complex(1.0 / Math.sqrt(2), 0), new Complex(1.0 / Math.sqrt(2), 0), new Complex(0, 0)},
             {new Complex(0, -1.0 / Math.sqrt(2)), new Complex(0, 1.0 / Math.sqrt(2)), new Complex(0, 0)},
@@ -99,12 +83,12 @@ public class QuantumExperimentsTest extends TestCase {
             new Complex(-2.0 / Math.sqrt(30), -Math.sqrt(5) / Math.sqrt(30)),
             new Complex(0, Math.sqrt(2.0 / 5.0))
         };
-        Complex[] estadoFinalResult1 = quantumExperiments.experimentoConFotonesComplejos(matrizAdyacencia, estadoInicial, 1);
+        Complex[] estadoFinalResult1 = basicQuantic.complexPhotons(matrizAdyacencia, estadoInicial, 1);
         assertFalse(basic.equalsV(estadoFinalResultToCompare1, estadoFinalResult1));
 
     }
 
-    public void testExperimentoMultirendijasBalas() {
+    public void testDeberiaHacerRendijasBullet() {
         double[][] probabilidades = {
             {0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0},
@@ -134,13 +118,13 @@ public class QuantumExperimentsTest extends TestCase {
                 matrizToCompareS += Arrays.toString(matrizToCompare[i]) + ", ";
             }
         }
-        String[] matrizVector = quantumExperiments.experimentoMultirendijasBalas(2, 5, probabilidades);
+        String[] matrizVector = basicQuantic.multiSlitBullet(2, 5, probabilidades);
         assertTrue(matrizToCompareS.equals(matrizVector[0]));
         assertTrue(Arrays.toString(vectorToCompare).equals(matrizVector[1]));
 
     }
 
-    public void testExperimentoMultirendijasFotones() {
+    public void testDeberiaHacerRendijasConFotones() {
         Complex[][] probabilidades = {
             {new Complex(0, 0), new Complex(0, 0), new Complex(0, 0), new Complex(0, 0), new Complex(0, 0), new Complex(0, 0), new Complex(0, 0), new Complex(0, 0)},
             {new Complex(0, 0), new Complex(0, 0), new Complex(0, 0), new Complex(0, 0), new Complex(0, 0), new Complex(0, 0), new Complex(0, 0), new Complex(0, 0)},
@@ -192,11 +176,10 @@ public class QuantumExperimentsTest extends TestCase {
         }
         vectorToCompareS = "}";
         String interferencias = "interferencias: [5,0] ";
-        String[] matrizVector = quantumExperiments.experimentoMultirendijasFotones(2, 5, probabilidades);
+        String[] matrizVector = basicQuantic.multiSlitPhoton(2, 5, probabilidades);
         assertTrue(matrizToCompareS.equals(matrizVector[0]));
         assertTrue(vectorToCompareS.equals(matrizVector[1]));
         assertTrue(interferencias.equals(matrizVector[2]));
-        System.out.println(matrizVector[2]);
 
     }
 
