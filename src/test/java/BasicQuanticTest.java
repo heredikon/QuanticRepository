@@ -182,5 +182,6 @@ public class BasicQuanticTest extends TestCase {
         assertTrue(interferencias.equals(matrizVector[2]));
 
     }
+    
 
 }
